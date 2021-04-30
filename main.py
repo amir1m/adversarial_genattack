@@ -9,9 +9,9 @@ import random
 import numpy as np
 
 import tensorflow as tf
-from setup_inception import ImageNet, InceptionModel
+#from setup_inception import ImageNet, InceptionModel
 from setup_mnist import MNIST, MNISTModel
-from setup_cifar import CIFAR, CIFARModel
+#from setup_cifar import CIFAR, CIFARModel
 
 import utils
 from genattack_tf2 import GenAttack2

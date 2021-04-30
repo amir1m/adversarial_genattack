@@ -1,7 +1,7 @@
 
 import os
 import numpy as np
-from scipy.misc import imsave
+from imageio import imwrite
 
 
 def generate_data(data, size=1000):
@@ -35,7 +35,7 @@ def l_0_dist(orig_img, new_img):
 
 
 def save_image(img, path):
-    imsave(path, (img+0.5))
+    imwrite(path, (img+0.5))
 
 
 class ResultLogger(object):
