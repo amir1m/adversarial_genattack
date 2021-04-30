@@ -5,7 +5,7 @@ import time
 import random
 import numpy as np
 import tensorflow as tf
-from setup_inception import ImageNet, InceptionModel
+#from setup_inception import ImageNet, InceptionModel
 
 
 class GenAttack2(object):

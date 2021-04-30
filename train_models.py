@@ -26,7 +26,7 @@ def train(data, file_name, params, num_epochs=50, batch_size=128, train_temp=1, 
     model = Sequential()
 
     print(data.train_data.shape)
-    
+
     model.add(Conv2D(params[0], (3, 3),
                             input_shape=data.train_data.shape[1:]))
     model.add(Activation('relu'))
@@ -47,7 +47,7 @@ def train(data, file_name, params, num_epochs=50, batch_size=128, train_temp=1, 
     model.add(Dense(params[5]))
     model.add(Activation('relu'))
     model.add(Dense(10))
-    
+
     if init != None:
         model.load_weights(init)
 
@@ -56,27 +56,26 @@ def train(data, file_name, params, num_epochs=50, batch_size=128, train_temp=1, 
                                                        logits=predicted/train_temp)
 
     sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
-    
+
     model.compile(loss=fn,
                   optimizer=sgd,
                   metrics=['accuracy'])
-    
+
     model.fit(data.train_data, data.train_labels,
               batch_size=batch_size,
               validation_data=(data.validation_data, data.validation_labels),
               nb_epoch=num_epochs,
               shuffle=True)
-    
+
 
     if file_name != None:
         model.save(file_name)
 
     return model
 
-    
+
 if not os.path.isdir('models'):
     os.makedirs('models')
 
-train(CIFAR(), "models/cifar", [64, 64, 128, 128, 256, 256], num_epochs=50)
+#train(CIFAR(), "models/cifar", [64, 64, 128, 128, 256, 256], num_epochs=50)
 train(MNIST(), "models/mnist", [32, 32, 64, 64, 200, 200], num_epochs=50)
-
